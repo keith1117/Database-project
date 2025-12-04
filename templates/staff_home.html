@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block title %}Staff{% endblock %}
+{% block content %}
+
+<h1>View Flights</h1>
+
+<form method="get" class="filters">
+  <!-- Row 1: Period -->
+  <div class="row r1">
+    <strong>Period</strong>
+    <label><input type="radio" name="period" value=""
+           {% if not filters.period %}checked{% endif %}> Default</label>
+    <label><input type="radio" name="period" value="current"
+           {% if filters.period=='current' %}checked{% endif %}> Current</label>
+    <label><input type="radio" name="period" value="future"
+           {% if filters.period=='future' %}checked{% endif %}> Future</label>
+    <label><input type="radio" name="period" value="past"
+           {% if filters.period=='past' %}checked{% endif %}> Past</label>
+  </div>
+
+  <!-- Row 2: Range -->
+  <div class="row r2">
+    <strong>Range</strong>
+    <span>Start</span>
+    <input type="date" name="start_date" value="{{ filters.start_date }}">
+    <span>End</span>
+    <input type="date" name="end_date" value="{{ filters.end_date }}">
+  </div>
+
+  <!-- Row 3: Airports & Cities -->
+  <div class="row r3">
+    <label>From (IATA)
+      <input type="text" name="from_airport" maxlength="3"
+             value="{{ filters.from_airport }}" style="text-transform:uppercase">
+    </label>
+    <label>To (IATA)
+      <input type="text" name="to_airport" maxlength="3"
+             value="{{ filters.to_airport }}" style="text-transform:uppercase">
+    </label>
+    <label>From City
+      <input type="text" name="from_city" value="{{ filters.from_city }}">
+    </label>
+    <label>To City
+      <input type="text" name="to_city" value="{{ filters.to_city }}">
+    </label>
+  </div>
+
+  <!-- Actions -->
+  <div class="row actions">
+    <button type="submit">Apply</button>
+    <a href="{{ url_for('staff_home') }}">Reset</a>
+  </div>
+</form>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Flight</th><th>Dep Time</th><th>Arr Time</th><th>From</th><th>To</th><th>Status</th><th>Customers</th>
+  </tr>
+  {% for f in rows %}
+  <tr>
+    <td>{{ f.flight_number }}</td>
+    <td>{{ f.departure_date_time }}</td>
+    <td>{{ f.arrival_date_time }}</td>
+    <td>{{ f.departure_airport }}</td>
+    <td>{{ f.arrival_airport }}</td>
+    <td>{{ f.status }}</td>
+    <td>
+      <a href="{{ url_for('staff_customers',
+                          flight_number=f.flight_number,
+                          departure_date_time=f.departure_date_time) }}">
+        View
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
