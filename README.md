@@ -136,7 +136,7 @@ python app.py
 - Packages missing: python -m pip install Flask PyMySQL python-dotenv.
 - Unicode/locale issues on Windows: run from PowerShell and make sure the console uses UTF-8.
 
-==============================================================================================================
+=======================================================================================================
 
 # Use Cases & Executed SQL
 
