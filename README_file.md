@@ -101,7 +101,7 @@ sql/
   create_tables.sql         Schema (Part 2 + constraints)
   insert.sql                Sample data
 
-.env.example                 Example environment config (copy → .env)
+.env                         Environment config
 requirements.txt             Python dependencies (if included)
 README_file.md               This README
 USE_CASES.md                 All use cases description
