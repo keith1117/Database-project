@@ -25,10 +25,15 @@ Eric Lin — Database & Flask Back-End
 
 Joint Work — Integration & Testing
   - End-to-end scenarios:
-    - Staff: view → filter → create → (30-day list) → change status → reports.
-    - Customer: search → purchase → my flights → rate/comment.
+    - Staff: view -> add airplane -> create flight -> change status -> view ratings/reports.
+    - Customer: search -> purchase -> my flights -> rate/comment.
   - Edge cases & consistency: time zones/date formats, empty states, idempotent actions, role checks, expired sessions.
   - Code review: ensured prepared statements, role-based access control, default 30-day display, reports, and basic XSS hygiene are fully met.
+
+Summary
+  - Keith: Flask routes + templates + validation (UI/flow heavy).
+  - Eric: database design + authentication/session + reports/status/ratings routes (back-end heavy).
+  - Together: delivered all Part 3 required use cases and Additional Requirements.
 
 Summary
   - Keith: Flask routes + templates + validation (UI/flow heavy).
